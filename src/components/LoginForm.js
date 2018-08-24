@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
         return (
             <form onSubmit={e => this.props.handle_login(e, this.state)}>
                 <h4>Login</h4>
-                <label htmlFor="username">username</label>
+                <label htmlFor="username">Usuario:</label>
                 <input
                     type="text"
                     name="username"
