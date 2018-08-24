@@ -45,7 +45,7 @@ class App extends Component {
                 localStorage.setItem('token', json.token);
                 this.setState({
                     logged_in: true,
-                    displayed_form: '',
+                    displayed_form: 'login',
                     username: json.username
                 });
             });
@@ -53,7 +53,7 @@ class App extends Component {
 
     handle_signup = (e, data) => {
         e.preventDefault();
-        fetch(`${this.base_url}core/users`, {
+        fetch(`${this.base_url}core/users/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ class App extends Component {
                 localStorage.setItem('token', json.token);
                 this.setState({
                     logged_in: true,
-                    displayed_form: '',
+                    displayed_form: 'signup',
                     username: json.username
                 });
             });
@@ -86,10 +86,10 @@ class App extends Component {
         let form;
         switch (this.state.displayed_form) {
             case 'login':
-                form = <LoginForm handle_login={this.handle_login}/>
+                form = <LoginForm handle_login={this.handle_login}/>;
                 break;
             case 'signup':
-                form = <SignupForm handle_signup={this.handle_signup}/>
+                form = <SignupForm handle_signup={this.handle_signup}/>;
                 break;
             default:
                 form = null;
